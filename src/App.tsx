@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Router, Outlet, Link } from '@tanstack/react-location';
+import { routes, location } from './Router';
 import './App.css';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router routes={routes} location={location}>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="posts">Posts</Link>
+          </li>
+        </ul>
+      </div>
+      <Outlet /> {/* パスが一致した際にレンダリングされるコンポーネント */}
+    </Router>
   );
 }
 
